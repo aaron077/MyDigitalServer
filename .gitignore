@@ -1,0 +1,9 @@
+
+# Compiled source #
+
+*.class
+#ºöÂÔÄ¿Â¼
+/classes/
+/bin/
+/target/
+/server/
