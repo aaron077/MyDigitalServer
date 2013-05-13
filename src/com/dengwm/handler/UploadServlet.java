@@ -1,4 +1,6 @@
-package info.sudr.file;
+package com.dengwm.handler;
+
+
 
 import java.awt.image.BufferedImage;
 import java.io.*;
@@ -26,8 +28,11 @@ public class UploadServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        
+    	response.setCharacterEncoding("UTF-8");
+    	request.setCharacterEncoding("UTF-8");
         if (request.getParameter("getfile") != null && !request.getParameter("getfile").isEmpty()) {
+//        	
+
             File file = new File(getServletContext().getRealPath("/")+"imgs/"+request.getParameter("getfile"));
             if (file.exists()) {
                 int bytes = 0;
@@ -98,15 +103,20 @@ public class UploadServlet extends HttpServlet {
     @SuppressWarnings("unchecked")
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+    	request.setCharacterEncoding("UTF-8");
         if (!ServletFileUpload.isMultipartContent(request)) {
             throw new IllegalArgumentException("Request is not multipart, please 'multipart/form-data' enctype for your form.");
         }
-      
+//    	判断文件夹是否存在，不存在创建文件夹
+    	File saveDir = new File(getServletContext().getRealPath("/")+"imgs/");
+    	if(!saveDir.exists() && !saveDir.isDirectory()){
+    		saveDir.mkdir();
+    	}
         ServletFileUpload uploadHandler = new ServletFileUpload(new DiskFileItemFactory());
+        response.setCharacterEncoding("UTF-8");
         PrintWriter writer = response.getWriter();
         response.setContentType("application/json");
-        response.setCharacterEncoding("UTF-8");
+        
         JSONArray json = new JSONArray();
         try {
             List<FileItem> items = uploadHandler.parseRequest(request);

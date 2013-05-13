@@ -4,10 +4,15 @@
     Author     : Amila
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html;charset=utf-8" pageEncoding="UTF-8"%>
+<%  
+String path = request.getContextPath();  
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";  
+%>  
 <!DOCTYPE html>
 <html lang="en">
     <head>
+    	<base href="<%=basePath%>" />  
         <!-- Force latest IE rendering engine or ChromeFrame if installed -->
         <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
         <meta charset="utf-8">
