@@ -9,7 +9,7 @@ import com.corundumstudio.socketio.Configuration;
 import com.corundumstudio.socketio.SocketIOClient;
 import com.corundumstudio.socketio.SocketIOServer;
 import com.corundumstudio.socketio.listener.DataListener;
-import com.dengwm.bean.ChatObject;
+import com.dengwm.bean.ClientInfoBean;;
 
 public class ServerLauncher {
 
@@ -21,17 +21,19 @@ public class ServerLauncher {
 
         final SocketIOServer server = new SocketIOServer(config);
 
-        server.addEventListener("chatevent", ChatObject.class, new DataListener<ChatObject>() {
-            public void onData(SocketIOClient client, ChatObject data, AckRequest ackRequest) {
-            	System.out.println("username"+data.getUserName());
-            	System.out.println("msg"+data.getMessage());
+        server.addEventListener("qryinfoevent", ClientInfoBean.class, new DataListener<ClientInfoBean>() {
+            public void onData(SocketIOClient client, ClientInfoBean data, AckRequest ackRequest) {
+            	System.out.println("clientName"+data.getClientName());
+            	System.out.println("company"+data.getCompany());
+            	System.out.println("region"+data.getRegion());
+            	System.out.println("startTime"+ data.getStartTime());
+            	System.out.println("endTime "+ data.getEndTime());
 //            	data.setMessage("dwmtest");
 //                server.getBroadcastOperations().sendEvent("chatevent", data);
 //                data.setMessage("test");
-            	List<ChatObject> datas = new ArrayList<ChatObject>();
-            	datas.add(data);
+
             	
-                client.sendEvent("chatevent", datas);
+                client.sendEvent("qryinfoevent", data);
             }
         });
         

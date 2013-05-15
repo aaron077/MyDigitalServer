@@ -41,18 +41,55 @@ img,input{ vertical-align:middle;}
 .search_div label{ padding:0 5px;}
 -->
 </style>
-<script src="js/jquery-1.4.4.min.js" ></script>
 
+	<script src="js/socket.io/socket.io.js"></script>
+    <script src="js/moment.min.js"></script>
+    <script src="js/jquery-1.7.2.min.js"></script>
+    
+    <script >
+	    var userName = 'user' + Math.floor((Math.random()*1000)+1);
+	
+		var socket =  io.connect('http://localhost:9092');
+	
+
+		socket.on('qryinfoevent', function(data) {
+			alert(data.clientName);
+		});
+		
+		function qryInfoEvent() {
+            var clientName = $('#clientName').val();
+            var company = $('#company').val();
+            var startTime = $('#startTime').val();
+            var endTime = $('#endTime').val();
+            var region = $('#region').val();
+            // don't forget to define type field '@class' 
+            // it should equals to class name which used 
+            // to deserialize object on server side
+            // via ...addJsonObjectListener() method
+            //
+            // TIP: you can customize type name field
+         // via Configuration.jsonTypeFieldName property
+
+                     socket.emit('qryinfoevent', {clientName: clientName, 
+       				  company: company,
+    				  startTime: startTime, 
+    				  endTime: endTime,
+    				  region:region});
+
+}
+
+		
+    </script>
 </head>
 <body>
     <div class="search_div">
         <form>
-            <label>终端名称:<input type="text" /></label>
-            <label>所属单位:<select><option>1222222</option><option>22222222</option></select></label>
-            <label>开始时间:<input type="text" onClick="WdatePicker()" style="width:100px;"></label>
-            <label>结束时间:<input type="text" onClick="WdatePicker()" style="width:100px;"></label>
-            <label>地区:<input type="text" /></label>       
-            <label><input type="button" value="查询" /></label>
+            <label>终端名称:<input type="text" name="clientName" id="clientName"/></label>
+            <label>所属单位:<select name="company" id="company"><option>1222222</option><option>22222222</option></select></label>
+            <label>开始时间:<input type="text" name="startTime" id="startTime" onClick="WdatePicker()" style="width:100px;"></label>
+            <label>结束时间:<input type="text" name="endTime" id="endTime" onClick="WdatePicker()" style="width:100px;"></label>
+            <label>地区:<input type="text" name="region" id="region"/></label>       
+            <label><input type="button" value="查询" onClick="qryInfoEvent()"/></label>
         </form>
     </div>
     <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">

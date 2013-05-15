@@ -9,6 +9,9 @@ package com.dengwm.bean;
 public class ClientInfoBean {
 	private String clientId;
 	private String clientName;
+	private String company;
+	private String startTime;
+	private String endTime;
 	private String region;
 	private String insertTime;
 	private String updateTime;
@@ -43,6 +46,24 @@ public class ClientInfoBean {
 	}
 	public void setUpdateTime(String updateTime) {
 		this.updateTime = updateTime;
+	}
+	public String getCompany() {
+		return company;
+	}
+	public void setCompany(String company) {
+		this.company = company;
+	}
+	public String getStartTime() {
+		return startTime;
+	}
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
+	}
+	public String getEndTime() {
+		return endTime;
+	}
+	public void setEndTime(String endTime) {
+		this.endTime = endTime;
 	}
 	
 	
