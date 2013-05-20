@@ -7,13 +7,18 @@ package com.dengwm.bean;
 * @date 2013-4-30 下午9:36:06
  */
 public class ClientInfoBean {
+//	终端ID
 	private String clientId;
+//	终端名称
 	private String clientName;
+//	所属单位
 	private String company;
-	private String startTime;
-	private String endTime;
+
+//	地区
 	private String region;
+//	入库时间
 	private String insertTime;
+//	修改时间
 	private String updateTime;
 	
 	
@@ -53,19 +58,7 @@ public class ClientInfoBean {
 	public void setCompany(String company) {
 		this.company = company;
 	}
-	public String getStartTime() {
-		return startTime;
-	}
-	public void setStartTime(String startTime) {
-		this.startTime = startTime;
-	}
-	public String getEndTime() {
-		return endTime;
-	}
-	public void setEndTime(String endTime) {
-		this.endTime = endTime;
-	}
-	
+
 	
 	
 }

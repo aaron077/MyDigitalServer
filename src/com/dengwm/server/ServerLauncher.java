@@ -26,8 +26,7 @@ public class ServerLauncher {
             	System.out.println("clientName"+data.getClientName());
             	System.out.println("company"+data.getCompany());
             	System.out.println("region"+data.getRegion());
-            	System.out.println("startTime"+ data.getStartTime());
-            	System.out.println("endTime "+ data.getEndTime());
+
 //            	data.setMessage("dwmtest");
 //                server.getBroadcastOperations().sendEvent("chatevent", data);
 //                data.setMessage("test");
