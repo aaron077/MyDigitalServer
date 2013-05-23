@@ -21,6 +21,10 @@ public class ClientInfoBean {
 //	修改时间
 	private String updateTime;
 	
+//	查找开始时间
+	private String startTime;
+//	查找结束时间
+	private String endTime;
 	
 	public String getClientId() {
 		return clientId;
@@ -57,6 +61,18 @@ public class ClientInfoBean {
 	}
 	public void setCompany(String company) {
 		this.company = company;
+	}
+	public String getStartTime() {
+		return startTime;
+	}
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
+	}
+	public String getEndTime() {
+		return endTime;
+	}
+	public void setEndTime(String endTime) {
+		this.endTime = endTime;
 	}
 
 	

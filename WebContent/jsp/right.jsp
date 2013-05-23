@@ -52,8 +52,17 @@ img,input{ vertical-align:middle;}
 		var socket =  io.connect('http://localhost:9092');
 	
 
-		socket.on('qryinfoevent', function(data) {
-			alert(data.clientName);
+		socket.on('qryinfoevent', function(datas) {
+			
+			$.each(datas,function(key,data){
+				alert(data.clientName);
+				$(".clientname").val(data.clientName);
+				$(".company").val(data.company);
+				$(".region").val(data.region);
+				$(".inserttime").val(data.insertTime);
+				$(".copymodel tr").clone().appendTo("#tablemain");
+			});
+			
 		});
 		
 		function qryInfoEvent() {
@@ -110,57 +119,14 @@ img,input{ vertical-align:middle;}
             <td width="4%" height="20" bgcolor="d3eaef" class="STYLE10"><div align="center">
               <input type="checkbox" name="checkbox" class="allcheckbox" id="checkbox" />
             </div></td>
-            <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">用户名</span></div></td>
-            <td width="15%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">用户角色</span></div></td>
-            <td width="14%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">联系方式</span></div></td>
-            <td width="16%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">IP地址</span></div></td>
-            <td width="27%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">详细描述</span></div></td>
+            <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">终端名称</span></div></td>
+            <td width="15%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">所属单位</span></div></td>
+            <td width="14%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">地区</span></div></td>
+            <td width="16%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">入库时间</span></div></td>
+            <td width="27%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">修改时间</span></div></td>
             <td width="14%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">基本操作</span></div></td>
           </tr>
-          <tr class="sel_tr">
-            <td height="20" bgcolor="#FFFFFF"><div align="center">
-              <input type="checkbox" name="checkbox3" class="checkboxs"  />
-            </div></td>
-            <td height="20" bgcolor="#FFFFFF" class="STYLE19"><input type="text" class="inputsty1 disedit" value="admin" readonly="readonly" /></td>
-            <td height="20" bgcolor="#FFFFFF" class="STYLE19"><input type="text" class="inputsty1 disedit" value="系统管理员"readonly="readonly" /></td>
-            <td height="20" bgcolor="#FFFFFF" class="STYLE19"><input type="text" class="inputsty1 disedit" value="123156465" readonly="readonly" /></td>
-            <td height="20" bgcolor="#FFFFFF" class="STYLE19"><input type="text" class="inputsty1 disedit" value="192.11.251.21" readonly="readonly" /></td>
-            <td height="20" bgcolor="#FFFFFF" class="STYLE19"><input type="text" class="inputsty1 disedit" value="用户可以对系统的所有操作进行管理" readonly="readonly" /></td>
-            <td height="20" bgcolor="#FFFFFF" align="center"><a class="STYLE21" href="javascript:void(0)" onclick="editthisTd(this)">编辑</a><a class="STYLE21" href="javascript:void(0)" onclick="savethisTd(this)" style="display:none;">保存</a> | <a class="STYLE21 a_delbtn" href="javascript:void(0)" onclick="delectLine(this)">删除</a></td>
-          </tr>
-          <tr class="sel_tr">
-            <td height="20" bgcolor="#FFFFFF"><div align="center">
-              <input type="checkbox" name="checkbox5" class="checkboxs"  />
-            </div></td>
-            <td height="20" bgcolor="#FFFFFF" class="STYLE19"><input type="text" class="inputsty1 disedit" value="admin" readonly="readonly" /></td>
-            <td height="20" bgcolor="#FFFFFF" class="STYLE19"><input type="text" class="inputsty1 disedit" value="系统管理员"readonly="readonly" /></td>
-            <td height="20" bgcolor="#FFFFFF" class="STYLE19"><input type="text" class="inputsty1 disedit" value="123156465" readonly="readonly" /></td>
-            <td height="20" bgcolor="#FFFFFF" class="STYLE19"><input type="text" class="inputsty1 disedit" value="192.11.251.21" readonly="readonly" /></td>
-            <td height="20" bgcolor="#FFFFFF" class="STYLE19"><input type="text" class="inputsty1 disedit" value="用户可以对系统的所有操作进行管理" readonly="readonly" /></td>
-            <td height="20" bgcolor="#FFFFFF" align="center"><a class="STYLE21" href="javascript:void(0)" onclick="editthisTd(this)">编辑</a><a class="STYLE21" href="javascript:void(0)" onclick="savethisTd(this)" style="display:none;">保存</a> | <a class="STYLE21 a_delbtn" href="javascript:void(0)" onclick="delectLine(this)">删除</a></td>
-          </tr>
-          <tr class="sel_tr">
-            <td height="20" bgcolor="#FFFFFF"><div align="center">
-              <input type="checkbox" name="checkbox10" class="checkboxs" />
-            </div></td>
-            <td height="20" bgcolor="#FFFFFF" class="STYLE19"><input type="text" class="inputsty1 disedit" value="admin" readonly="readonly" /></td>
-            <td height="20" bgcolor="#FFFFFF" class="STYLE19"><input type="text" class="inputsty1 disedit" value="系统管理员"readonly="readonly" /></td>
-            <td height="20" bgcolor="#FFFFFF" class="STYLE19"><input type="text" class="inputsty1 disedit" value="123156465" readonly="readonly" /></td>
-            <td height="20" bgcolor="#FFFFFF" class="STYLE19"><input type="text" class="inputsty1 disedit" value="192.11.251.21" readonly="readonly" /></td>
-            <td height="20" bgcolor="#FFFFFF" class="STYLE19"><input type="text" class="inputsty1 disedit" value="用户可以对系统的所有操作进行管理" readonly="readonly" /></td>
-            <td height="20" bgcolor="#FFFFFF" align="center"><a class="STYLE21" href="javascript:void(0)" onclick="editthisTd(this)">编辑</a><a class="STYLE21" href="javascript:void(0)" onclick="savethisTd(this)" style="display:none;">保存</a> | <a class="STYLE21 a_delbtn" href="javascript:void(0)" onclick="delectLine(this)">删除</a></td>
-          </tr>
-          <tr class="sel_tr">
-            <td height="20" bgcolor="#FFFFFF"><div align="center">
-              <input type="checkbox" name="checkbox10" class="checkboxs" />
-            </div></td>
-            <td height="20" bgcolor="#FFFFFF" class="STYLE19"><input type="text" class="inputsty1" value="" /></td>
-            <td height="20" bgcolor="#FFFFFF" class="STYLE19"><input type="text" class="inputsty1" value="" /></td>
-            <td height="20" bgcolor="#FFFFFF" class="STYLE19"><input type="text" class="inputsty1" value="" /></td>
-            <td height="20" bgcolor="#FFFFFF" class="STYLE19"><input type="text" class="inputsty1" value="" /></td>
-            <td height="20" bgcolor="#FFFFFF" class="STYLE19"><input type="text" class="inputsty1" value="" /></td>
-            <td height="20" bgcolor="#FFFFFF" align="center"><a class="STYLE21" href="javascript:void(0)" onclick="editthisTd(this)" style="display:none;">编辑</a><a class="STYLE21" href="javascript:void(0)" onclick="savethisTd(this)">保存</a> | <a class="STYLE21 a_delbtn" href="javascript:void(0)" onclick="delectLine(this)">删除</a></td>
-          </tr>
+
         </table></td>
       </tr>
       <tr>
@@ -191,11 +157,11 @@ img,input{ vertical-align:middle;}
             <td height="20" bgcolor="#FFFFFF"><div align="center">
               <input type="checkbox" name="checkbox10" class="checkboxs" />
             </div></td>
-            <td height="20" bgcolor="#FFFFFF" class="STYLE19"><input type="text" class="inputsty1" value="" /></td>
-            <td height="20" bgcolor="#FFFFFF" class="STYLE19"><input type="text" class="inputsty1" value="" /></td>
-            <td height="20" bgcolor="#FFFFFF" class="STYLE19"><input type="text" class="inputsty1" value="" /></td>
-            <td height="20" bgcolor="#FFFFFF" class="STYLE19"><input type="text" class="inputsty1" value=""/></td>
-            <td height="20" bgcolor="#FFFFFF" class="STYLE19"><input type="text" class="inputsty1" value="" /></td>
+            <td height="20" bgcolor="#FFFFFF" class="STYLE19"><input type="text" id="clientname" name="clientname" class="inputsty1 clientname" value="" /></td>
+            <td height="20" bgcolor="#FFFFFF" class="STYLE19"><input type="text" id="company" name="company" class="inputsty1 company" value="" /></td>
+            <td height="20" bgcolor="#FFFFFF" class="STYLE19"><input type="text" id="region" name="region" class="inputsty1 region" value="" /></td>
+            <td height="20" bgcolor="#FFFFFF" class="STYLE19"><input type="text" id="inserttime" name="inserttime" class="inputsty1 inserttime" value=""/></td>
+            <td height="20" bgcolor="#FFFFFF" class="STYLE19"><input type="text" id="updatetime" name="updatetime" class="inputsty1 updatetime" value="" /></td>
             <td height="20" bgcolor="#FFFFFF" align="center"><a class="STYLE21" href="javascript:void(0)" onclick="editthisTd(this)" style="display:none;">编辑</a><a class="STYLE21" href="javascript:void(0)" onclick="savethisTd(this)">保存</a> | <a class="STYLE21 a_delbtn" href="javascript:void(0)" onclick="delectLine(this)">删除</a></td>
           </tr>
     </table>
@@ -262,6 +228,7 @@ function delallTr(){
 
 	}
 $(document).ready(function(){
+							
 						   $('.allcheckbox').click(function(){
 														  if($(this).attr('checked')==true){
 															  $(".checkboxs").each(function(){$(this).attr('checked',true);})

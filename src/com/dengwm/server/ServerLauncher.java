@@ -9,6 +9,7 @@ import com.corundumstudio.socketio.Configuration;
 import com.corundumstudio.socketio.SocketIOClient;
 import com.corundumstudio.socketio.SocketIOServer;
 import com.corundumstudio.socketio.listener.DataListener;
+import com.dengwm.bean.ChatObject;
 import com.dengwm.bean.ClientInfoBean;;
 
 public class ServerLauncher {
@@ -26,13 +27,15 @@ public class ServerLauncher {
             	System.out.println("clientName"+data.getClientName());
             	System.out.println("company"+data.getCompany());
             	System.out.println("region"+data.getRegion());
-
+            	List<ClientInfoBean> datas = new ArrayList<ClientInfoBean>();
+            	datas.add(data);	
+            	datas.add(data);
 //            	data.setMessage("dwmtest");
 //                server.getBroadcastOperations().sendEvent("chatevent", data);
 //                data.setMessage("test");
-
+            	System.out.println(datas.size());
             	
-                client.sendEvent("qryinfoevent", data);
+                client.sendEvent("qryinfoevent", datas);
             }
         });
         
