@@ -29,7 +29,6 @@ public class ServerLauncher {
             	System.out.println("region"+data.getRegion());
             	List<ClientInfoBean> datas = new ArrayList<ClientInfoBean>();
             	datas.add(data);	
-            	datas.add(data);
 //            	data.setMessage("dwmtest");
 //                server.getBroadcastOperations().sendEvent("chatevent", data);
 //                data.setMessage("test");

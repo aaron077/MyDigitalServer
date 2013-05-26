@@ -55,11 +55,11 @@ img,input{ vertical-align:middle;}
 		socket.on('qryinfoevent', function(datas) {
 			
 			$.each(datas,function(key,data){
-				alert(data.clientName);
-				$(".clientname").val(data.clientName);
-				$(".company").val(data.company);
-				$(".region").val(data.region);
-				$(".inserttime").val(data.insertTime);
+				$(".copymodel .clientid").val(data.clientID);
+				$(".copymodel .clientname").val(data.clientName);
+				$(".copymodel .company").val(data.company);
+				$(".copymodel .region").val(data.region);
+				$(".copymodel .inserttime").val(data.insertTime);
 				$(".copymodel tr").clone().appendTo("#tablemain");
 			});
 			
@@ -93,6 +93,7 @@ img,input{ vertical-align:middle;}
 <body>
     <div class="search_div">
         <form>
+        	<label>终端ID:<input type="text" name="clientID" id="clientID"/></label>
             <label>终端名称:<input type="text" name="clientName" id="clientName"/></label>
             <label>所属单位:<select name="company" id="company"><option>1222222</option><option>22222222</option></select></label>
             <label>开始时间:<input type="text" name="startTime" id="startTime" onClick="WdatePicker()" style="width:100px;"></label>
@@ -119,6 +120,7 @@ img,input{ vertical-align:middle;}
             <td width="4%" height="20" bgcolor="d3eaef" class="STYLE10"><div align="center">
               <input type="checkbox" name="checkbox" class="allcheckbox" id="checkbox" />
             </div></td>
+            <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">终端ID</span></div></td>
             <td width="10%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">终端名称</span></div></td>
             <td width="15%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">所属单位</span></div></td>
             <td width="14%" height="20" bgcolor="d3eaef" class="STYLE6"><div align="center"><span class="STYLE10">地区</span></div></td>
@@ -157,6 +159,7 @@ img,input{ vertical-align:middle;}
             <td height="20" bgcolor="#FFFFFF"><div align="center">
               <input type="checkbox" name="checkbox10" class="checkboxs" />
             </div></td>
+             <td height="20" bgcolor="#FFFFFF" class="STYLE19"><input type="text" id="clientid" name="clientid" class="inputsty1 clientid" value="" /></td>
             <td height="20" bgcolor="#FFFFFF" class="STYLE19"><input type="text" id="clientname" name="clientname" class="inputsty1 clientname" value="" /></td>
             <td height="20" bgcolor="#FFFFFF" class="STYLE19"><input type="text" id="company" name="company" class="inputsty1 company" value="" /></td>
             <td height="20" bgcolor="#FFFFFF" class="STYLE19"><input type="text" id="region" name="region" class="inputsty1 region" value="" /></td>
